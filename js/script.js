@@ -29,7 +29,9 @@ const app = new Vue({
         axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
         .then(res => {
           this.email.push(res.data.response);
-          this.loading = false;
+          if (this.email.length === this.myEmails){
+            this.loading = false;
+          }
           console.log("CARICATO!");
         })
       }
