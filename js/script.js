@@ -2,6 +2,8 @@
 
   - Generare 10 indirizzi email e stamparli in pagina all’interno di una lista
 
+  - Far comparire gli indirizzi email solamente quando sono stati tutti generati
+
 */
 
 const app = new Vue({
@@ -10,7 +12,8 @@ const app = new Vue({
 
   data:{
 
-    email: ""
+    email: "",
+    loading: true
 
   },
 
@@ -25,6 +28,8 @@ const app = new Vue({
         axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
         .then(res => {
           this.email += " | " + res.data.response;
+          this.loading = false;
+          console.log("CARICATO!");
         })
       }
     }

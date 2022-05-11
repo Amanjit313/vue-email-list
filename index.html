@@ -13,7 +13,8 @@
 <body>
   
   <div id="app">
-    <h1>{{email}}</h1>
+    <h1 v-if="loading">STA CARICANDO...</h1>
+    <h1 v-else>{{email}}</h1>
   </div>
 
   <script src="js/script.js"></script>
