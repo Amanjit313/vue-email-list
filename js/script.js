@@ -12,7 +12,8 @@ const app = new Vue({
 
   data:{
 
-    email: "",
+    email: [],
+    myEmails: 10,
     loading: true
 
   },
@@ -24,10 +25,10 @@ const app = new Vue({
   methods: {
 
     generaEmail(){
-      for (let i = 0; i < 10; i++ ){
+      for (let i = 0; i < this.myEmails; i++ ){
         axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
         .then(res => {
-          this.email += " | " + res.data.response;
+          this.email.push(res.data.response);
           this.loading = false;
           console.log("CARICATO!");
         })
